@@ -1,13 +1,24 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 4000 || process.env.PORT;
+const port =  process.env.PORT || 4000;
 const cookieparser = require("cookie-parser");
 const errorMiddleware = require("./middleware/Error");
 const cloudinary = require("cloudinary");
 const Razorpay = require("razorpay");
 const Stats = require("./models/statsModel");
 const nodeCron = require("node-cron");
+
+
+
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const uri = "mongodb+srv://saketjha00:jha843323@cluster0.zikoif5.mongodb.net/test";
+// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
 
 // import database
 const connectDb = require("./config/database");
@@ -22,7 +33,7 @@ cloudinary.v2.config({
 
 //razorpay integration
 module.exports.instance = new Razorpay({
-  key_id: process.env.RAZORPAY_KEYID,
+  key_id: "rzp_test_Q8oVwWqLZh2rin",
   key_secret: process.env.RAZORPAY_SECRETKEY,
 });
 

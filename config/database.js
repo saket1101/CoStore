@@ -1,14 +1,18 @@
 const mongoose = require('mongoose')
 mongoose.set("strictQuery",true)
 
+const mongo_uri = `mongodb+srv://saketjha00:9709260818@cluster0.zikoif5.mongodb.net/?retryWrites=true&w=majority`
 
 const connectDb = async()=>{
   try{
-    const {connection} = await mongoose.connect(process.env.MONGO_URI)
+    const {connection} = await mongoose.connect(mongo_uri)
     console.log(`MongoDb connection : ${connection.host}`)
   }  catch(error){
     console.log(error.message)
   }
 }
+
+
+
 
 module.exports= connectDb
