@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 mongoose.set("strictQuery",true)
 
-const mongo_uri = `mongodb+srv://saketjha00:9709260818@cluster0.zikoif5.mongodb.net/?retryWrites=true&w=majority`
+const mongo_uri = `mongodb+srv://saketjha00:${process.env.MONGO_PASS}@cluster0.zikoif5.mongodb.net/?retryWrites=true&w=majority`
 
 const connectDb = async()=>{
   try{
