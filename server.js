@@ -8,8 +8,7 @@ const cloudinary = require("cloudinary");
 const Razorpay = require("razorpay");
 const Stats = require("./models/statsModel");
 const nodeCron = require("node-cron");
-
-
+const cors = require("cors")
 
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri = "mongodb+srv://saketjha00:jha843323@cluster0.zikoif5.mongodb.net/test";
@@ -55,6 +54,11 @@ app.use(
   })
 );
 app.use(cookieparser());
+app.use(cors({
+  origin:process.env.FRONTEND_URL,
+  credentials:true,
+  methods:['GET','POST','PUT','DELETE']
+}))
 // import all routers
 const userRouter = require("./routes/userRoutes");
 const courseRouter = require("./routes/coursesRoutes");
