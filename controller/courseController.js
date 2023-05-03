@@ -8,7 +8,7 @@ const Stats = require("../models/statsModel")
 //get all courses without lectures
 module.exports.getAllCourse = catchAsyncError(async (req, res, next) => {
   const keyword = req.query.keyword || "";
-  const category = req.query.categor || "";
+  const category = req.query.category || "";
   const courses = await Course.find({
     title:{
       $regex: keyword,
