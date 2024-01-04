@@ -10,15 +10,6 @@ const Stats = require("./models/statsModel");
 const nodeCron = require("node-cron");
 const cors = require("cors")
 
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-// const uri = "mongodb+srv://saketjha00:jha843323@cluster0.zikoif5.mongodb.net/test";
-// const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-// client.connect(err => {
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
-
 // import database
 const connectDb = require("./config/database");
 connectDb();
@@ -55,19 +46,12 @@ app.use(
 );
 app.use(cookieparser());
 app.use(cors({
-  origin:process.env.FRONTEND_URL,
-  credentials:true,
-  methods:['GET','POST','PUT','DELETE','PATCH'],
+  origin: '*', 
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
-// Adding CORS headers middleware
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
-//   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-//   res.setHeader('Access-Control-Allow-Credentials', true);
-//   next();
-// });
+
 // import all routers
 const userRouter = require("./routes/userRoutes");
 const courseRouter = require("./routes/coursesRoutes");
@@ -84,5 +68,5 @@ app.use(errorMiddleware);
 //listening port
 
 app.listen(port, () => {
-  console.log(`Server is listennin on port: ${port}`);
+  console.log(`Server is listening on port: ${port}`);
 });
